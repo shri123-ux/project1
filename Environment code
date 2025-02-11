@@ -113,4 +113,5 @@ painter.penup()
 painter.goto(-210, 220)
 painter.write("Missed letters!")
 
+#this is just here to keep the program open
 input()
