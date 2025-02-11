@@ -1,1 +1,5 @@
-
+list_4 =["bell", "bear", "play", "sing", "bird", "bean", "game", "rice", "four", "five", "tree", "keep", "dark", "moon", "cool"]
+list_5 =["dream", "guard", "flood", "adult", "sight", "alarm", "force", "wound", "brave", "cable", "panic", "study", "faith", "equal", "grade"]
+list_6 =["orange", "market", "circle", "travel", "friend", "coffee", "bright", "butter", "summer", "bottle", "grains", "tiger", "window", "chicken", "rocket"]
+word_count = int((input("Do you want a 4, 5 or 6 letter word?: "))
+if word_count == 4:
