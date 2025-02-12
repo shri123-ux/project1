@@ -129,9 +129,6 @@ painter.penup()
 painter.goto(-210, 220)
 painter.write("Missed letters!")
 
-#this is just here to keep the program open
-input()
-
 list_4 = ["bell", "bear", "play", "sing", "bird", "bean", "game", "rice", "four", "five", "tree", "keep", "dark", "moon", "cool"]
 list_5 = ["dream", "guard", "flood", "adult", "sight", "alarm", "force", "wound", "brave", "cable", "panic", "study", "faith", "equal", "grade"]
 list_6 = ["orange", "market", "circle", "travel", "friend", "coffee", "bright", "butter", "summer", "bottle", "grains", "tiger", "window", "chicken", "rocket"]
