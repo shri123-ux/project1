@@ -11,7 +11,9 @@ print("You will have 6 tries to accurately guess the word")
 time.sleep(3)
 print("If you don't guess the word correctly... well, let's just say the hangman won't be very happy")
 time.sleep(3)
-print("Good luck!")
+ready = input("Are you ready to play the game (y/n): ")
+if ready = "n":
+    exit()
 
 list_4 = ["bell", "bear", "play", "sing", "bird", "bean", "game", "rice", "four", "five", "tree", "keep", "dark", "moon", "cool"]
 list_5 = ["dream", "guard", "flood", "adult", "sight", "alarm", "force", "wound", "brave", "cable", "panic", "study", "faith", "equal", "grade"]
