@@ -113,5 +113,65 @@ painter.penup()
 painter.goto(-210, 220)
 painter.write("Missed letters!")
 
-#this is just here to keep the program open
+#drawing the hangman when words missed
+
+''''
+
+#head
+painter.goto(20,170)
+painter.pendown()
+painter.color("blue")
+painter.pensize(4)
+painter.circle(30)
+painter.penup()
+
+#torso
+painter.goto(20,170)
+painter.pendown()
+painter.right(90)
+painter.forward(100)
+painter.penup()
+
+#left leg
+painter.goto(20,70)
+painter.pendown()
+painter.left(45)
+painter.forward(50)
+painter.penup()
+
+#right leg
+painter.goto(20,70)
+painter.pendown()
+painter.right(90)
+painter.forward(50)
+painter.penup()
+
+#left arm
+painter.goto(20,120)
+painter.pendown()
+painter.right(90)
+painter.forward(50)
+painter.penup()
+
+#right arm
+painter.goto(20,120)
+painter.pendown()
+painter.right(90)
+painter.forward(50)
+painter.penup()
+
+'''
+
+#creating the 4 lines
+painter.goto(-210,-150)
+painter.pendown()
+painter.color("black")
+painter.pensize(4)
+painter.forward(50)
+
 input()
+
+
+#creating the 5 lines 
+
+#creating the 6 lines 
