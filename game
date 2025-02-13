@@ -3,247 +3,262 @@ import time
 import turtle as trtl
 painter = trtl.Turtle()
 
-#environment/intro code below
 
-print("Welcome to hangman!")
-time.sleep(3)
-print("The rules are simple...")
-time.sleep(3)
-print("Below you will be able to choose between a 4, 5, or 6 lettered word")
-time.sleep(3)
-print("You will have 6 tries to accurately guess the word")
-time.sleep(3)
-print("If you don't guess the word correctly... well, let's just say the hangman won't be very happy")
-time.sleep(3)
-ready = input("Are you ready to play the game (y/n): ")
-if ready == "n":
-    exit()
+while True:
 
-painter.penup()
-painter.goto(-300,-200)
-painter.pendown()
+    #environment/intro code below
 
-#outline
-square = 0
-while (square < 4):
+    print("Welcome to hangman!")
+    time.sleep(3)
+    print("The rules are simple...")
+    time.sleep(3)
+    print("Below you will be able to choose between a 4, 5, or 6 lettered word")
+    time.sleep(3)
+    print("You will have 6 tries to accurately guess the word")
+    time.sleep(3)
+    print("If you don't guess the word correctly... well, let's just say the hangman won't be very happy")
+    time.sleep(3)
+    ready = input("Are you ready to play the game (y/n): ")
+    if ready == "n":
+        exit()
+
+    painter.penup()
+    painter.goto(-300,-200)
+    painter.pendown()
+
+    #outline
+    square = 0
+    while (square < 4):
+        painter.forward(600)
+        painter.left(90)
+        square = square + 1
+
+    painter.penup()
+    painter.goto(-300,360)
+    painter.pendown()
+
+    #1st part of curtain
+    curt = 0
+    while (curt < 10):
+        painter.fillcolor("grey")
+        painter.begin_fill()
+        painter.right(90)
+        painter.circle(30, 180)
+        painter.right(90)
+        curt = curt + 1
+        painter.end_fill()
+
+    #2nd part of curtain
+    painter.fillcolor("red")
+    painter.begin_fill()
+    painter.left(90)
+    painter.forward(40)
+    painter.left(90)
     painter.forward(600)
     painter.left(90)
-    square = square + 1
-
-painter.penup()
-painter.goto(-300,360)
-painter.pendown()
-
-#1st part of curtain
-curt = 0
-while (curt < 10):
-    painter.fillcolor("grey")
-    painter.begin_fill()
-    painter.right(90)
-    painter.circle(30, 180)
-    painter.right(90)
-    curt = curt + 1
+    painter.forward(40)
+    painter.left(90)
+    painter.forward(600)
     painter.end_fill()
 
-#2nd part of curtain
-painter.fillcolor("red")
-painter.begin_fill()
-painter.left(90)
-painter.forward(40)
-painter.left(90)
-painter.forward(600)
-painter.left(90)
-painter.forward(40)
-painter.left(90)
-painter.forward(600)
-painter.end_fill()
-
-#stage
-painter.penup()
-painter.goto(-300,-100)
-painter.pendown()
-painter.fillcolor("brown")
-painter.begin_fill()
-painter.forward(600)
-painter.right(90)
-painter.forward(100)
-painter.right(90)
-painter.forward(600)
-painter.right(90)
-painter.forward(100)
-painter.end_fill()
-
-#hangman pole
-painter.color("black")
-painter.penup()
-painter.goto(100,-100)
-painter.pendown()
-painter.pensize(7)
-painter.right(90)
-painter.forward(50)
-painter.penup()
-painter.goto(100,-100)
-painter.pendown()
-painter.left(180)
-painter.forward(50)
-painter.penup()
-painter.goto(100,-100)
-painter.pendown()
-painter.right(90)
-painter.forward(400)
-painter.left(90)
-painter.forward(80)
-painter.left(90)
-painter.forward(80)
-
-#box for missed letters
-painter.pensize(3)
-painter.penup()
-painter.goto(-250,250)
-painter.pendown()
-painter.left(90)
-painter.forward(150)
-painter.right(90)
-painter.forward(250)
-painter.right(90)
-painter.forward(150)
-painter.right(90)
-painter.forward(250)
-
-#spaces in box
-painter.right(90)
-
-x = -210
-y= 200
-
-spaces = 0 
-while(spaces < 6):
+    #stage
     painter.penup()
-    painter.goto(x,y)
+    painter.goto(-300,-100)
     painter.pendown()
-    painter.forward(70)
-    spaces = spaces + 1 
-    y = y - 30
+    painter.fillcolor("brown")
+    painter.begin_fill()
+    painter.forward(600)
+    painter.right(90)
+    painter.forward(100)
+    painter.right(90)
+    painter.forward(600)
+    painter.right(90)
+    painter.forward(100)
+    painter.end_fill()
 
-#text in box
-painter.penup()
-painter.goto(-210, 220)
-painter.write("Missed letters!")
+    #hangman pole
+    painter.color("black")
+    painter.penup()
+    painter.goto(100,-100)
+    painter.pendown()
+    painter.pensize(7)
+    painter.right(90)
+    painter.forward(50)
+    painter.penup()
+    painter.goto(100,-100)
+    painter.pendown()
+    painter.left(180)
+    painter.forward(50)
+    painter.penup()
+    painter.goto(100,-100)
+    painter.pendown()
+    painter.right(90)
+    painter.forward(400)
+    painter.left(90)
+    painter.forward(80)
+    painter.left(90)
+    painter.forward(80)
 
-#game code below
+    #box for missed letters
+    painter.pensize(3)
+    painter.penup()
+    painter.goto(-250,250)
+    painter.pendown()
+    painter.left(90)
+    painter.forward(150)
+    painter.right(90)
+    painter.forward(250)
+    painter.right(90)
+    painter.forward(150)
+    painter.right(90)
+    painter.forward(250)
 
-list_4 = ["bell", "bear", "play", "sing", "bird", "bean", "game", "rice", "four", "five", "tree", "keep", "dark", "moon", "cool"]
-list_5 = ["dream", "guard", "flood", "adult", "sight", "alarm", "force", "wound", "brave", "cable", "panic", "study", "faith", "equal", "grade"]
-list_6 = ["orange", "market", "circle", "travel", "friend", "coffee", "bright", "butter", "summer", "bottle", "grains", "tiger", "window", "chicken", "rocket"]
+    #spaces in box
+    painter.right(90)
 
-word_count = int(input("Do you want a 4, 5 or 6 letter word?: "))
+    x = -210
+    y= 200
 
-random_index = random.randint(0, 15)
+    spaces = 0 
+    while(spaces < 6):
+        painter.penup()
+        painter.goto(x,y)
+        painter.pendown()
+        painter.forward(70)
+        spaces = spaces + 1 
+        y = y - 30
 
-if word_count == 4:
-    word = list_4[random_index]
-elif word_count == 5:
-    word = list_5[random_index]
-elif word_count == 6:
-    word = list_6[random_index]
-else:
-    print("Invalid input")
-    exit()  
+    #text in box
+    painter.penup()
+    painter.goto(-210, 220)
+    painter.write("Missed letters!")
 
-answer = list(word)
-correct_letters = []
-wrong_letters = []
-tries = 6 
+    #game code below
 
-while correct_letters != answer and tries > 0:
-    guess = input("Guess a letter: ")  
+    list_4 = ["bell", "bear", "play", "sing", "bird", "bean", "game", "rice", "four", "five", "tree", "keep", "dark", "moon", "cool"]
+    list_5 = ["dream", "guard", "flood", "adult", "sight", "alarm", "force", "wound", "brave", "cable", "panic", "study", "faith", "equal", "grade"]
+    list_6 = ["orange", "market", "circle", "travel", "friend", "coffee", "bright", "butter", "summer", "bottle", "grains", "tiger", "window", "chicken", "rocket"]
 
-    if guess in answer: 
-        correct_letters.append(guess)
-        print(f"Good guess! {guess} is in the word.")
+    word_count = int(input("Do you want a 4, 5 or 6 letter word?: "))
+
+    random_index = random.randint(0, 15)
+
+    if word_count == 4:
+        word = list_4[random_index]
+    elif word_count == 5:
+        word = list_5[random_index]
+    elif word_count == 6:
+        word = list_6[random_index]
     else:
-        wrong_letters.append(guess)
-        tries = tries - 1
-        print(f"{guess} is not in the word. You have {tries} tries left.")
-        if tries == 5:
-            painter.goto(20,170)
-            painter.pendown()
-            painter.color("blue")
-            painter.pensize(4)
-            painter.circle(30)
-            painter.penup()
-            painter.goto(-175, 200)
-            painter.color("red")
-            painter.write(f"{guess}", font =("Arial", 12, "normal"))
-            painter.hideturtle()
-        if tries == 4:
-            painter.showturtle()
-            painter.color("blue")
-            painter.goto(20,170)
-            painter.pendown()
-            painter.right(90)
-            painter.forward(100)
-            painter.penup()
-            painter.color("red")
-            painter.goto(-175, 170)
-            painter.write(f"{guess}", font =("Arial", 12, "normal"))
-            painter.hideturtle()
-        if tries == 3:
-            painter.showturtle()
-            painter.color("blue")
-            painter.goto(20,70)
-            painter.pendown()
-            painter.left(45)
-            painter.forward(50)
-            painter.penup()
-            painter.color("red")
-            painter.goto(-175, 140)
-            painter.write(f"{guess}", font =("Arial", 12, "normal"))
-            painter.hideturtle()
-        if tries == 2:
-            painter.showturtle()
-            painter.color("blue")
-            painter.goto(20,70)
-            painter.pendown()
-            painter.right(90)
-            painter.forward(50)
-            painter.penup()
-            painter.color("red")
-            painter.goto(-175,110)
-            painter.write(f"{guess}", font =("Arial", 12, "normal"))
-            painter.hideturtle()
-        if tries == 1:
-            painter.showturtle()
-            painter.color("blue")
-            painter.goto(20,120)
-            painter.pendown()
-            painter.right(90)
-            painter.forward(50)
-            painter.penup()
-            painter.color("red")
-            painter.goto(-175, 80)
-            painter.write(f"{guess}", font =("Arial", 12, "normal"))
-            painter.hideturtle()
-        if tries == 0:
-            painter.showturtle()
-            painter.color("blue")
-            painter.goto(20,120)
-            painter.pendown()
-            painter.right(90)
-            painter.forward(50)
-            painter.penup()
-            painter.color("red")
-            painter.goto(-175,50)
-            painter.write(f"{guess}", font =("Arial", 12, "normal"))
-        
-    display_word = [letter if letter in correct_letters else '_' for letter in answer]
-    print("Current word: ", " ".join(display_word))
-        
-    if "_" not in display_word:  
-        print("Congratulations! You've guessed the word correctly!")
-        break
-    else:
-        print("Please enter a valid letter.")
+        print("Invalid input")
+        exit()  
 
-if tries == 0 and "_" in display_word:
-    print(f"Sorry, you've run out of tries. The word was: {''.join(answer)}")
+    answer = list(word)
+    correct_letters = []
+    wrong_letters = []
+    tries = 6 
+
+    while correct_letters != answer and tries > 0:
+        guess = input("Guess a letter: ")  
+
+        if guess in answer: 
+            correct_letters.append(guess)
+            print(f"Good guess! {guess} is in the word.")
+        else:
+            wrong_letters.append(guess)
+            tries = tries - 1
+            print(f"{guess} is not in the word. You have {tries} tries left.")
+            if tries == 5:
+                painter.goto(20,170)
+                painter.pendown()
+                painter.color("blue")
+                painter.pensize(4)
+                painter.circle(30)
+                painter.penup()
+                painter.goto(-175, 200)
+                painter.color("red")
+                painter.write(f"{guess}", font =("Arial", 12, "normal"))
+                painter.hideturtle()
+            if tries == 4:
+                painter.showturtle()
+                painter.color("blue")
+                painter.goto(20,170)
+                painter.pendown()
+                painter.right(90)
+                painter.forward(100)
+                painter.penup()
+                painter.color("red")
+                painter.goto(-175, 170)
+                painter.write(f"{guess}", font =("Arial", 12, "normal"))
+                painter.hideturtle()
+            if tries == 3:
+                painter.showturtle()
+                painter.color("blue")
+                painter.goto(20,70)
+                painter.pendown()
+                painter.left(45)
+                painter.forward(50)
+                painter.penup()
+                painter.color("red")
+                painter.goto(-175, 140)
+                painter.write(f"{guess}", font =("Arial", 12, "normal"))
+                painter.hideturtle()
+            if tries == 2:
+                painter.showturtle()
+                painter.color("blue")
+                painter.goto(20,70)
+                painter.pendown()
+                painter.right(90)
+                painter.forward(50)
+                painter.penup()
+                painter.color("red")
+                painter.goto(-175,110)
+                painter.write(f"{guess}", font =("Arial", 12, "normal"))
+                painter.hideturtle()
+            if tries == 1:
+                painter.showturtle()
+                painter.color("blue")
+                painter.goto(20,120)
+                painter.pendown()
+                painter.right(90)
+                painter.forward(50)
+                painter.penup()
+                painter.color("red")
+                painter.goto(-175, 80)
+                painter.write(f"{guess}", font =("Arial", 12, "normal"))
+                painter.hideturtle()
+            if tries == 0:
+                painter.showturtle()
+                painter.color("blue")
+                painter.goto(20,120)
+                painter.pendown()
+                painter.right(90)
+                painter.forward(50)
+                painter.penup()
+                painter.color("red")
+                painter.goto(-175,50)
+                painter.write(f"{guess}", font =("Arial", 12, "normal"))
+            
+        display_word = [letter if letter in correct_letters else '_' for letter in answer]
+        print("Current word: ", " ".join(display_word))
+            
+        if "_" not in display_word:  
+            duck = input(print("Congratulations! You've guessed the word correctly! Do you want to play again? (y/n)"))
+            if duck == "n":
+                print("Thanks for playing!!")
+                break
+    
+            
+            else:
+            
+                continue
+            break
+        else:
+            print("Please enter a valid letter.")
+
+    if tries == 0 and "_" in display_word:
+        print("You got it wrong!")
+        duck = input(print(" Do you want to play again? (y/n)"))
+        if duck == "n":
+                print("Thanks for playing!!")
+                break
