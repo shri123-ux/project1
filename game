@@ -252,9 +252,6 @@ while True:
             else:
             
                 continue
-            break
-        else:
-            print("Please enter a valid letter.")
 
     if tries == 0 and "_" in display_word:
         print("You got it wrong!")
